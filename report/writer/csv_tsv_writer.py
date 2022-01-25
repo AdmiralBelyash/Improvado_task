@@ -1,5 +1,5 @@
 import csv
-from report.writer.writer_data import Writer
+from .writer_data import Writer
 
 
 class WriterCsvTsv(Writer):
