@@ -1,10 +1,10 @@
 import vk_api
 import sys
-from parser_main import parse_arg
-from vk_api_wrapper import VkApiWrapper
-from friends_report import FriendsReport
-from writer.csv_tsv_writer import WriterCsvTsv
-from writer.json_data_writer import WriterJson
+from report.parser import parse_arg
+from report.vk_api_wrapper import VkApiWrapper
+from report.friends_report import FriendsReport
+from report.writer.csv_tsv_writer import WriterCsvTsv
+from report.writer.json_data_writer import WriterJson
 
 
 def main() -> None:

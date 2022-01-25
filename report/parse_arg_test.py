@@ -1,6 +1,6 @@
 from unittest import TestCase
-from report.parser_main import parse_arg
-import argparse
+
+from .parser import parse_arg
 
 
 class ParseArgTest(TestCase):
@@ -21,4 +21,9 @@ class ParseArgTest(TestCase):
         self.assertEqual(parsed.format, 'csv')
 
     def test_parse_arg_uncorrect_user_id(self):
-        self.assertRaises(parse_arg(['-t', 'long', '-u', 'bebra']), (ValueError, argparse.ArgumentError, SystemExit))
+        with self.assertRaises(SystemExit):
+            parse_arg(['-t', 'long', '-u', 'bebra'])
+
+    def test_parse_arg_uncorrect_format(self):
+        with self.assertRaises(SystemExit):
+            parse_arg(['-t', 'long', '-u', '123', '-f', 'yaml'])

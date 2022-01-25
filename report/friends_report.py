@@ -1,4 +1,4 @@
-from report_base import Report
+from .report_base import Report
 
 
 class FriendsReport(Report):
