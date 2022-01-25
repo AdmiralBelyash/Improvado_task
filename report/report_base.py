@@ -1,4 +1,4 @@
-from .vk_api_wrapper import VkApiWrapper
+from report.vk_api_wrapper import VkApiWrapper
 
 
 class Report:
