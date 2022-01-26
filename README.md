@@ -20,11 +20,15 @@ python(python3 для linux) main.py -t (наш токен) -u (id пользо�
 usage: main.py [-h] -t TOKEN -u USER_ID [-f {csv,tsv,json}]
 
 optional arguments:
+
   -h, --help            show this help message and exit
+  
   -t TOKEN, --token TOKEN
                         Токен для авторизации vk api
+                        
   -u USER_ID, --user_id USER_ID
                         Id пользователя для поиска друзей
+                        
   -f {csv,tsv,json}, --format {csv,tsv,json}
                         Формат вывода отчета
 
