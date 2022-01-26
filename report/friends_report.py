@@ -37,14 +37,16 @@ class FriendsReport(Report):
         return temp_data
 
     def get_data(self, user_id: int):
-        temp_data = {}
-        info = self.api.get_user_info(user_id)[0]
 
-        temp_data['first_name'] = info['first_name']
-        temp_data['last_name'] = info['last_name']
-        self.format_country(temp_data, info)
-        self.format_city(temp_data, info)
-        self.format_date(temp_data, info)
-        self.format_sex(temp_data, info)
-
-        return temp_data
+        data = []
+        friends_info = self.api.get_friends_info(user_id)['items']
+        for info in friends_info:
+            temp_data = {}
+            temp_data['first_name'] = info['first_name']
+            temp_data['last_name'] = info['last_name']
+            self.format_country(temp_data, info)
+            self.format_city(temp_data, info)
+            self.format_date(temp_data, info)
+            self.format_sex(temp_data, info)
+            data.append(temp_data)
+        return data

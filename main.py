@@ -16,16 +16,9 @@ def main() -> None:
     session = vk_api.VkApi(token=token)
     vk = session.get_api()
     api = VkApiWrapper(vk)
-    try:
-        friends = api.get_user_friends(user_id=user_id)
-    except vk_api.exceptions.ApiError:
-        print('Неверный токен или id пользователя. Попробуйте заново')
-        return
     report = FriendsReport(api=api)
     print('Идет процесс получения данных')
-    data = []
-    for friend in friends:
-        data.append(report.get_data(friend))
+    data = report.get_data(user_id=user_id)
     data.sort(key=lambda x: x['first_name'])
     print('Данные получены')
     if format_file == 'csv':

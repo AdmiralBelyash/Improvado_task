@@ -6,16 +6,16 @@ from report.friends_report import FriendsReport
 class FriendReportTest(TestCase):
     def setUp(self):
         api = Mock()
-        api.get_user_info.return_value = [
-            {
+        api.get_friends_info.return_value = {
+            'items': [{
                 'first_name': 'Иван',
                 'last_name': 'Бураков',
                 'country': {'id': 123, 'title': 'Россия'},
                 'city': {'id': 123, 'title': 'Такеча'},
                 'bdate': '23.1.2002',
                 'sex': 2,
-            },
-        ]
+            }],
+        }
         self.report = FriendsReport(api)
 
     def test_format_city(self):
@@ -50,14 +50,14 @@ class FriendReportTest(TestCase):
         self.assertEqual(self.report.format_sex({}, {'sex': 'человек'}), {'sex': 'Unknown'})
 
     def test_get_data(self):
-        expected = {
+        expected = [{
             'first_name': 'Иван',
             'last_name': 'Бураков',
             'country': 'Россия',
             'city': 'Такеча',
             'birth_date': '2002.1.23',
             'sex': 'Муж'
-        }
+        }]
         got = self.report.get_data(user_id=1)
 
         self.assertEqual(got, expected)
